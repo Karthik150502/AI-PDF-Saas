@@ -8,7 +8,18 @@ type Props = {
 }
 
 export default function MessageList({ messages, isLoading }: Props) {
+    React.useEffect(() => {
+        const messageContainer = document.getElementById("message-container")
+        if (messageContainer) {
+            messageContainer.scrollTo({
+                top: messageContainer.scrollHeight,
+                behavior: "smooth"
+            })
+        }
+    }, [messages])
 
+
+    
     if (isLoading) {
         return <div className='absolute left-1/2 top-1/2 w-fit h-fit'>
             <Loading />
@@ -20,15 +31,7 @@ export default function MessageList({ messages, isLoading }: Props) {
         return <div className='w-full h-40 bg-slate-600'></div>
     }
 
-    React.useEffect(() => {
-        const messageContainer = document.getElementById("message-container")
-        if (messageContainer) {
-            messageContainer.scrollTo({
-                top: messageContainer.scrollHeight,
-                behavior: "smooth"
-            })
-        }
-    }, [messages])
+
 
 
     return (
