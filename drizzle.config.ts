@@ -9,7 +9,6 @@ export default {
     schema: './src/lib/db/schema.ts',
     dbCredentials: {
         url: "postgresql://neondb_owner:lv4iVrsB6xbd@ep-wispy-paper-a1ir8kbe.ap-southeast-1.aws.neon.tech/neondb?sslmode=require",
-        connectionString: process.env.DATABASE_URL!
         // connectionString: "postgresql://neondb_owner:lv4iVrsB6xbd@ep-wispy-paper-a1ir8kbe.ap-southeast-1.aws.neon.tech/neondb?sslmode=require"
     },
 

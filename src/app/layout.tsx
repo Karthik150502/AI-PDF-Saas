@@ -4,6 +4,10 @@ import { ClerkProvider } from "@clerk/nextjs";
 
 import { montserrat200, montserrat300, montserrat400 } from "@/fonts/montserrat";
 import clsx from "clsx";
+import Provider from "@/components/ui/provider";
+import { Toaster } from "react-hot-toast"
+
+
 export const metadata: Metadata = {
   title: "PDF AI Assistance Bot",
 };
@@ -15,9 +19,14 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      <html lang="en">
-        <body className={clsx(montserrat300.className, "w-screen min-h-screen overflow-hidden overflow-x-hidden overflow-y-hidden")}>{children}</body>
-      </html>
+      <Provider>
+        <html lang="en">
+          <body className={clsx(montserrat300.className, "w-screen min-h-screen overflow-hidden overflow-x-hidden overflow-y-hidden")}>
+            {children}
+            <Toaster />
+          </body>
+        </html>
+      </Provider>
     </ClerkProvider>
   );
 }

@@ -12,10 +12,24 @@ export const chat = pgTable("chats", {
 })
 
 
+export type DrizzleChat = typeof chat.$inferSelect;
+
+
 export const messages = pgTable("messages", {
     id: serial("id").primaryKey(),
     chatId: integer("chat_id").references(() => chat.id).notNull(),
     content: text("content").notNull(),
     createdAt: timestamp("created_at").notNull().defaultNow(),
     role: userSystemEnum("role").notNull(),
+})
+
+
+
+export const userSubscriptions = pgTable("userSubscriptions", {
+    id: serial("id").primaryKey(),
+    userId: varchar("user_id", { length: 256 }).notNull().unique(),
+    stripeCustomerId: varchar("stripe_customer_id", { length: 256 }).notNull().unique(),
+    stripeSubscriptionId: varchar("stripe_subscription_id", { length: 256 }).unique(),
+    stripePriceId: varchar("stripe_price_id", { length: 256 }),
+    stripeCurrentPeriodEnd: timestamp("stripe_current_period")
 })
