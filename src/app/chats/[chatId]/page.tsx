@@ -10,6 +10,7 @@ import React, { useState } from 'react'
 import "./styles.css"
 
 
+
 type props = {
     params: {
         chatId: string

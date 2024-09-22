@@ -1,8 +1,7 @@
 import { neon, neonConfig } from '@neondatabase/serverless'
 import { drizzle } from 'drizzle-orm/neon-http'
-import 'dotenv/config'
+import 'dotenv/config';
 
-neonConfig.fetchConnectionCache = true
 
 if (!process.env.DATABASE_URL) {
     throw new Error('DATABASE_URL is not set')
