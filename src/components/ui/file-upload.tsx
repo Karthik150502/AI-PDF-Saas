@@ -115,8 +115,17 @@ export const FileUpload = ({
     });
 
     return (
-        <div className={clsx("w-full", montserrat300.className)} {...getRootProps()}>
+        <div
+
+            className={clsx("w-full", montserrat300.className)} {...getRootProps()}>
             <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                    delay: 0.3,
+                    duration: 0.3,
+                    ease: "easeInOut",
+                }}
                 onClick={handleClick}
                 whileHover="animate"
                 className="p-10 group/file block rounded-lg cursor-pointer w-full relative overflow-hidden"
@@ -236,6 +245,8 @@ export const FileUpload = ({
                 </div>
             </motion.div>
         </div>
+
+
     );
 };
 

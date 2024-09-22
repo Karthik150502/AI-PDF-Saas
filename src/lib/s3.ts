@@ -1,5 +1,5 @@
 import AWS from "aws-sdk";
-
+import 'dotenv/config'
 
 export async function uploadFileToS3(file: File) {
     try {

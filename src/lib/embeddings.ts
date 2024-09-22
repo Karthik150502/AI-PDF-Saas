@@ -1,5 +1,5 @@
 import { OpenAIApi, Configuration } from 'openai-edge'
-
+import 'dotenv/config'
 
 
 const config = new Configuration({

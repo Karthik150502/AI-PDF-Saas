@@ -35,7 +35,8 @@ export default function ChatInputs({ chatId }: Props) {
     });
 
     return (
-        <div className='h-full w-full relative overflow-y-scroll hide_scrl'>
+
+        <div className='h-full w-full relative overflow-y-scroll hide_scrl flex flex-col items-center justify-between'>
 
             <div className="bg-white sticky top-0 inset-x-0 h-fit flex items-center p-2 shadow-sm">
                 <h3 className="text-xl font-extrabold overflow-y-hidden">Chats</h3>
@@ -43,14 +44,14 @@ export default function ChatInputs({ chatId }: Props) {
 
             <div className="w-full relative">
                 <MessageList messages={messages} isLoading={isLoading} />
-            </div>
 
-            <form onSubmit={handleSubmit} className='w-full sticky bottom-0 px-2 py-4 inset-x-0 bg-white shadow-sm'>
-                <div className="flex flex-row gap-x-2 w-full">
-                    <Input type='text' onChange={handleInputChange} value={input} className='font-semibold'></Input>
-                    <Button className='bg-slate-800'><Send strokeWidth={2} size={15} /></Button>
-                </div>
-            </form>
+                <form onSubmit={handleSubmit} className='w-full sticky bottom-0 px-2 py-4 inset-x-0 bg-white shadow-sm'>
+                    <div className="flex flex-row gap-x-2 w-full">
+                        <Input type='text' onChange={handleInputChange} value={input} className='font-semibold'></Input>
+                        <Button className='bg-slate-800'><Send strokeWidth={2} size={15} /></Button>
+                    </div>
+                </form>
+            </div>
         </div>
     )
 }

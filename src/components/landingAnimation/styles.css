@@ -1,32 +1,112 @@
 .img1 {
-    animation: img1 0.2s ease-in-out 5s;
+    -webkit-animation: slide 1s forwards;
+    -webkit-animation-delay: 1s;
+    animation: img1 1s forwards;
+    animation-delay: 1s;
+    position: absolute;
+    left: -450px;
+    top: -450px;
+    rotate: 45deg;
 }
 
 .img2 {
-    animation: img2 0.2s ease-in-out 0.02s;
+    -webkit-animation: slide 1s forwards;
+    -webkit-animation-delay: 2s;
+    animation: img2 1s forwards;
+    animation-delay: 2s;
+    position: absolute;
+    right: -450px;
+    top: -450px;
+    rotate: 90deg
 }
 
 .img3 {
-    animation: img3 0.2s ease-in-out 0.02s;
+    -webkit-animation: slide 1s forwards;
+    -webkit-animation-delay: 1.5s;
+    animation: img3 1s forwards;
+    animation-delay: 1.5s;
+    position: absolute;
+    right: -450px;
+    bottom: -450px;
+    rotate: 150deg;
 }
 
 .img4 {
-    animation: img4 0.2s ease-in-out 0.02s;
+    -webkit-animation: slide 1s forwards;
+    -webkit-animation-delay: 2s;
+    animation: img4 1s forwards;
+    animation-delay: 2s;
+    position: absolute;
+    left: -450px;
+    bottom: -450px;
+    rotate: 270deg;
 }
 
 .img5 {
-    animation: img5 0.2s ease-in-out 0.02s;
+    -webkit-animation: slide 1s forwards;
+    -webkit-animation-delay: 3s;
+    animation: img5 1s forwards;
+    animation-delay: 3s;
+    position: absolute;
+    bottom: -450px;
+    right: -25%;
+    rotate: 0deg;
+}
+
+.logo {
+    -webkit-animation: slide 1s forwards;
+    -webkit-animation-delay: 4s;
+    animation: logo 1s forwards;
+    animation-delay: 4s;
+    position: absolute;
+    bottom: -450px;
+    right: -25%;
+    rotate: 0deg;
 }
 
 
 @keyframes img1 {
-    from {
-        transform: translateX('-50px');
-        transform: translateY('-50px');
+    100% {
+        left: 0px;
+        top: 0px;
     }
+}
 
-    to {
-        transform: translateX('0px');
-        transform: translateY('0px');
+@keyframes img2 {
+    100% {
+        right: 0px;
+        top: 0px;
     }
+}
+
+@keyframes img3 {
+    100% {
+        right: 0px;
+        bottom: 0px;
+    }
+}
+
+@keyframes img4 {
+    100% {
+        left: 0px;
+        bottom: 0px;
+    }
+}
+
+@keyframes img5 {
+    100% {
+        bottom: 25%;
+        right: 20%;
+    }
+}
+
+@keyframes logo {
+    100% {
+        bottom: 35%;
+        right: 20%;
+    }
+}
+
+.hide-scroll::-webkit-scrollbar {
+    display: none;
 }

@@ -27,7 +27,7 @@ export default function SubscriptionButton(props: Props) {
 
 
     return (
-        <Button disabled={loading} onClick={handleSubscription}>
+        <Button disabled={loading} onClick={handleSubscription} className='rounded-full'>
             {props.isPro ? "Manage Subscriptions" : "Get Pro"}
         </Button>
     )

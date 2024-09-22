@@ -1,10 +1,7 @@
 import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
-import { db } from "./db";
-import { chat } from "./db/schema";
-import { eq } from "drizzle-orm";
 import { PineconeRecord, RecordMetadata } from "@pinecone-database/pinecone";
-
+import 'dotenv/config'
 
 
 export function cn(...inputs: ClassValue[]) {

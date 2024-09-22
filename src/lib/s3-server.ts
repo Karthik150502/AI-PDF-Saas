@@ -1,5 +1,8 @@
 import AWS from "aws-sdk"
 import fs from 'fs'
+import 'dotenv/config'
+
+
 export async function downloadFromS3(file_key: string) {
     try {
         AWS.config.update({

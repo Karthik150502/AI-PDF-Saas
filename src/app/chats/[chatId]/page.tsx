@@ -44,13 +44,11 @@ export default async function page({ params: { chatId } }: props) {
                 </div>
 
 
-                {/* PDF Viewing */}
                 <div className="flex-[5] overflow-scroll hide_scrl max-h-screen">
                     <PDFViewer pdfUrl={currentChat?.pdfUrl || ""} />
                 </div>
 
 
-                {/* Chat Input */}
                 <div className="flex-[3] hide_scrl max-h-screen">
                     <ChatInputs chatId={chatId} />
                 </div>
