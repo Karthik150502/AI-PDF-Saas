@@ -1,6 +1,7 @@
 
 import { Pinecone } from "@pinecone-database/pinecone"
-import 'dotenv/config'
+
+
 
 
 import { downloadFromS3 } from "./s3-server";

@@ -27,7 +27,6 @@
     "axios": "^1.7.4",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
-    "dotenv": "^16.4.5",
     "drizzle-kit": "^0.24.0",
     "drizzle-orm": "^0.33.0",
     "framer-motion": "^11.5.6",
