@@ -12,7 +12,7 @@ import { getPrompt } from '@/lib/utils'
 
 
 
-export const runTime = 'edge'
+// export const runTime = 'edge'
 export const dynamic = 'force-dynamic';
 
 const config = new Configuration({
