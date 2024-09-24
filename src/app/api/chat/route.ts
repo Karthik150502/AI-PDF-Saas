@@ -10,8 +10,7 @@ import { NextResponse } from 'next/server'
 import { getPrompt } from '@/lib/utils'
 
 
-
-export const runTime = 'edge'
+export const runtime = 'edge'
 export const dynamic = 'force-dynamic';
 
 const config = new Configuration({
