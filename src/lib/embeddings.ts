@@ -21,11 +21,7 @@ export async function getEmbeddings(text: string) {
         console.log("result, ", result)
         return result.data[0].embedding as number[];
 
-        // const res = []
-        // for (let i = 0; i < 1536; i++) {
-        //     res.push(Math.random() * 0.00001)
-        // }
-        // return res;
+
     } catch (error) {
         console.log("Error calling openAI embedding api, ", error)
         throw Error
