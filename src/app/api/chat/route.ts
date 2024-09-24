@@ -10,8 +10,8 @@ import { NextResponse } from 'next/server'
 import { getPrompt } from '@/lib/utils'
 
 
-export const runtime = 'edge'
-export const dynamic = 'force-dynamic';
+// export const runtime = 'edge'
+// export const dynamic = 'force-dynamic';
 
 const config = new Configuration({
     apiKey: process.env.OPENAI_API_KEY!,
