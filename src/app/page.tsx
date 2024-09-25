@@ -36,7 +36,7 @@ export default async function Page() {
         <div className="flex flex-col items-start justify-center text-start">
           <div
             className="flex items-center">
-            <h1 className="text-6xl mr-2 font-extrabold drop-shadow-sm bg-transparent bg-clip-text font-serif">Chat with any PDF</h1>
+            <h1 className="text-5xl mr-2 font-extrabold drop-shadow-sm bg-transparent bg-clip-text">Chat with any PDF</h1>
             <UserButton signInUrl="" />
           </div>
           <div
