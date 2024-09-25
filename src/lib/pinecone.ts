@@ -61,13 +61,6 @@ export async function loadS3IntoPinecone(fileKey: string) {
     // const pages = await loader.pages(); // Deprecated....
     const pages = (await loader.load()) as PDFPage[];
 
-
-
-
-
-
-
-
     // 2. Split and segment the PDF..
     // return pages;
     const documents = await Promise.all(pages.map(prepareDocument))

@@ -27,8 +27,8 @@ export async function downloadFromS3(file_key: string) {
         fs.writeFileSync(file_name, obj.Body as Buffer)
         return file_name
 
-        // return `/tmp/KarthikJAug12th2024.pdf`;
-        // return `/tmp/dummyPdf.pdf`;
+        return `/tmp/KarthikJAug12th2024.pdf`;
+        return `/tmp/dummyPdf.pdf`;
 
     } catch (error) {
 
