@@ -31,13 +31,14 @@ export async function POST(req: Request) {
             console.log({ 'error': 'Chat not found' }, { status: 404 })
             return NextResponse.json({ 'error': 'Chat not found' }, { status: 404 })
         }
+        console.log("Chat found")
 
         const fileName = _chats[0].fileKey
-
         const lastMsg = messages[messages.length - 1]
         const context = await getContext(lastMsg.content, fileName)
 
         const prompt = getPrompt(context);
+        console.log("Prompt built,", prompt)
 
         const response = await openai.createChatCompletion({
             model: 'gpt-3.5-turbo',
@@ -46,6 +47,9 @@ export async function POST(req: Request) {
             ],
             stream: true
         })
+
+
+        console.log("Chat completion created,", response)
 
         const stream = OpenAIStream(response, {
             onStart: async () => {
