@@ -29,12 +29,6 @@ export default function ChatViewer({ chatId, chats }: Props) {
     }
 
 
-    const deleteChat = async (chatid: number) => {
-        const res = (await axios.delete("/api/chat")).data({
-            chatid: chatid
-        })
-        console.log(res)
-    }
 
 
     return (
@@ -52,9 +46,7 @@ export default function ChatViewer({ chatId, chats }: Props) {
                                 <p className='text-black text-xs whitespace-nowrap text-ellipsis w-full overflow-hidden truncate'>
                                     {chat.pdfName}
                                 </p>
-                                <DeleteIcon onClick={() => {
-                                    deleteChat(chat.id)
-                                }} className='text-black' size={15} strokeWidth={1} />
+                                
                             </div>
                         </Link>
                     })

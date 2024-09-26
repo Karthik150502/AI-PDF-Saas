@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { Button } from "@/components/ui/button"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { useRouter } from 'next/navigation'
-import { ChevronLeft, ChevronRight, Home, Plus, Zap } from 'lucide-react'
+import { ChevronLeft, ChevronRight, Trash2 as DeleteIcon, Plus, Zap } from 'lucide-react'
 import { DrizzleChat } from '@/lib/db/schema'
 import { cn } from '@/lib/utils'
 import axios from 'axios'
@@ -40,6 +40,13 @@ export default function SlidingSidebar({
     }
 
 
+    const deleteChat = async (chatid: number) => {
+        const res = (await axios.delete("/api/chat")).data({
+            chatid: chatid
+        })
+        console.log(res)
+    }
+
 
     return (
         <div className={`fixed inset-y-0 left-0 z-50 w-64 bg-slate-950 text-white transform ${isOpen ? 'translate-x-0' : '-translate-x-full'
@@ -67,11 +74,14 @@ export default function SlidingSidebar({
                         <button
                             key={chat.id}
                             onClick={() => { router.push(`/chats/${chat.id}`) }}
-                            className={cn("block text-xs w-full text-left py-2 px-3 rounded-md hover:bg-gray-800 transition-colors", {
+                            className={cn("block gap-x-2 text-xs w-full text-left py-2 px-3 rounded-md hover:bg-gray-800 transition-colors", {
                                 "bg-gray-800": chat.id === Number(chatId)
                             })}
                         >
                             {chat.pdfName}
+                            <DeleteIcon onClick={() => {
+                                deleteChat(chat.id)
+                            }} className='text-white' size={15} strokeWidth={1} />
                         </button>
                     ))}
                 </div>
