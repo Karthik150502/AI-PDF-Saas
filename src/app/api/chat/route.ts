@@ -128,7 +128,7 @@ export async function DELETE(req: Request) {
         const client = await getPineconeClient()
         const pineconeIndex = client.Index('pdfchatai')
         const namespace = convertToASCII(fileKey);
-        await pineconeIndex.deleteOne(namespace);
+        await pineconeIndex.deleteMany({ deleteAll: true, namespace });
 
 
         let id = await db.delete(chat).where(eq(chat.id, chatid))
