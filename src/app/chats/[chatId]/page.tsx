@@ -1,59 +1,75 @@
+
+import React from 'react'
+import { redirect } from 'next/navigation';
+import { auth } from '@clerk/nextjs/server';
 import { db } from '@/lib/db';
 import { chat } from '@/lib/db/schema';
-import { auth } from '@clerk/nextjs/server';
 import { eq } from 'drizzle-orm';
-import { redirect } from 'next/navigation';
-import ChatViewer from '@/components/ChatViewer';
-import PDFViewer from '@/components/PDFViewer';
-import ChatInputs from '@/components/ChatInput/ChatInputs';
-import React from 'react'
-import "./styles.css"
+import ChatComponent from '@/components/chatComponents/chatComponent'
+import DocumentPreview from '@/components/PdfIframe/PdfViewer'
+import SlidingSidebar from '@/components/sideBarComponent/SideBar'
 
-
-
-type props = {
+type PageProps = {
     params: {
         chatId: string
     }
 }
 
-export default async function page({ params: { chatId } }: props) {
-
+export default async function DocumentAIChat({ params: { chatId } }: PageProps) {
     const { userId } = auth();
 
     if (!userId) {
+        console.log("Use not found, redirecting to sign-in")
         redirect("/sign-in")
     }
 
     const _chats = await db.select().from(chat).where(eq(chat.userId, userId));
     if (!_chats) {
-        redirect("/")
-    }
-
-    if (!_chats.find((chat) => chat.id == parseInt(chatId))) {
+        console.log("Chats not found, redirecting to the home page.")
         redirect("/")
     }
     const currentChat = _chats.find((chat) => chat.id == parseInt(chatId))
 
+    if (!currentChat) {
+        console.log(`Chat ${chatId} not found, redirecting to the home page.`)
+        redirect("/")
+    }
 
     return (
-        <div className='flex overflow-scroll hide_scrl max-h-screen'>
-            <div className='flex max-h-screen w-full overflow-scroll hide_scrl'>
-                {/* Chats Viewer */}
-                <div className='flex-[1] max-w-xs'>
-                    <ChatViewer chatId={parseInt(chatId)} chats={_chats} />
-                </div>
+        <div className="flex h-screen bg-gray-100">
+            {/* Sidebar */}
 
+            <SlidingSidebar
+                {...{
+                    chats: _chats,
+                    chatId: chatId,
+                }}
+            />
+            {/* Main content */}
+            <div className="flex-1 flex flex-col overflow-hidden">
+                {/* Header */}
+                <header className="bg-white shadow-sm">
+                    <div className="flex items-center justify-center p-4">
+                        <h1 className="text-2xl font-semibold">{currentChat.pdfName}</h1>
+                    </div>
+                </header>
 
-                <div className="flex-[5] overflow-scroll hide_scrl max-h-screen">
-                    <PDFViewer pdfUrl={currentChat?.pdfUrl || ""} />
-                </div>
+                {/* Content area */}
+                <main className="flex-1 overflow-auto">
+                    <div className="container mx-auto p-4 h-full">
+                        <div className="flex flex-col lg:flex-row h-full space-y-4 lg:space-y-0 lg:space-x-4">
+                            {/* Document preview */}
+                            <div className="flex-1 bg-white rounded-lg shadow-md p-4 overflow-auto">
+                                <DocumentPreview documentUrl={currentChat?.pdfUrl || ""} />
+                            </div>
 
-
-                <div className="flex-[3] hide_scrl max-h-screen">
-                    <ChatInputs chatId={chatId} />
-                </div>
-
+                            {/* Chat area */}
+                            <div className="flex-1 bg-white rounded-lg shadow-md p-4 flex flex-col">
+                                <ChatComponent chatId={chatId} />
+                            </div>
+                        </div>
+                    </div>
+                </main>
             </div>
         </div>
     )

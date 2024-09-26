@@ -81,7 +81,7 @@ export const FileUpload = ({
                     setUploading(false)
                     console.log(chat_id)
                     toast.success("Chat has been created.")
-                    router.push(`/chats2/${chat_id}`)
+                    router.push(`/chats/${chat_id}`)
                 },
                 onError: (error) => {
                     console.log(error)

@@ -8,7 +8,7 @@ type Props = {
 export default function GoToChats({ chatId }: Props) {
     return (
         <Button className="flex gap-x-1 rounded-full">
-            <Link href={`/chats/${chatId}`}>Go to Chats</Link>
+            <Link href={`/chats`}>Go to Chats</Link>
             <ArrowRight strokeWidth={1} />
         </Button>
     )
