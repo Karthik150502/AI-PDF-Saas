@@ -136,6 +136,6 @@ export async function DELETE(req: Request) {
         return NextResponse.json({ message: `Chat ${id} successfully deleted.` }, { status: 200 })
     }
     catch (e) {
-        return NextResponse.json({ message: 'Object delele failed, try again later' }, { status: 500 })
+        return NextResponse.json({ message: `Object delele failed, try again later: ${e}` }, { status: 500 })
     }
 }

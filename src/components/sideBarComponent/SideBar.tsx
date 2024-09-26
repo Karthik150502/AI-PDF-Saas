@@ -72,14 +72,14 @@ export default function SlidingSidebar({
                         <button
                             key={chat.id}
                             onClick={() => { router.push(`/chats/${chat.id}`) }}
-                            className={cn("flex items-center gap-x-2 text-xs w-full text-left py-2 px-3 rounded-md hover:bg-gray-800 transition-colors", {
+                            className={cn("flex items-center justify-between gap-x-2 text-xs w-full text-left py-2 px-3 rounded-md hover:bg-gray-800 transition-colors", {
                                 "bg-gray-800": chat.id === Number(chatId)
                             })}
                         >
                             {chat.pdfName}
                             <DeleteIcon onClick={() => {
                                 deleteChat(chat.id)
-                            }} className='text-white' size={15} strokeWidth={1} />
+                            }} className='text-red-500 hover:scale-110 transition-transform' size={15} strokeWidth={1} />
                         </button>
                     ))}
                 </div>
