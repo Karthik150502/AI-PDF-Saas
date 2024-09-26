@@ -41,8 +41,8 @@ export default function ChatComponent({ chatId }: { chatId: string }) {
 
                         <div
                             className={cn("ring-1 ring-gray-900/10 max-w-xs md:max-w-md lg:max-w-lg xl:max-w-xl p-2 shadow-md", message.role === 'user'
-                                ? 'bg-gray-200 text-black rounded-tr-full rounded-tl-full rounded-bl-full'
-                                : 'bg-gray-400 text-gray-800  rounded-tr-full rounded-tl-full rounded-br-full')}
+                                ? 'bg-gray-200 text-black rounded-tr-md rounded-tl-md rounded-bl-md'
+                                : 'bg-gray-400 text-gray-800  rounded-tr-md rounded-tl-md rounded-br-md')}
                         >
                             <p
 
