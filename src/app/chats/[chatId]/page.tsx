@@ -6,7 +6,7 @@ import { redirect } from 'next/navigation';
 import ChatViewer from '@/components/ChatViewer';
 import PDFViewer from '@/components/PDFViewer';
 import ChatInputs from '@/components/ChatInput/ChatInputs';
-import React, { useState } from 'react'
+import React from 'react'
 import "./styles.css"
 
 
