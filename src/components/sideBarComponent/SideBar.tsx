@@ -11,7 +11,7 @@ import axios from 'axios'
 
 interface SlidingSidebarProps {
     chats: DrizzleChat[],
-    chatId: string,
+    chatId?: string,
 }
 
 export default function SlidingSidebar({

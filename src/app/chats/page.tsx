@@ -15,7 +15,7 @@ type PageProps = {
     }
 }
 
-export default async function DocumentAIChat({ params: { chatId } }: PageProps) {
+export default async function DocumentAIChat() {
     const { userId } = auth();
 
     if (!userId) {
@@ -28,12 +28,9 @@ export default async function DocumentAIChat({ params: { chatId } }: PageProps) 
         console.log("Chats not found, redirecting to the home page.")
         redirect("/")
     }
-    const currentChat = _chats.find((chat) => chat.id == parseInt(chatId))
 
-    if (!currentChat) {
-        console.log(`Chat ${chatId} not found, redirecting to the home page.`)
-        redirect("/")
-    }
+
+
 
     return (
         <div className="flex h-screen bg-gray-100">
@@ -42,7 +39,6 @@ export default async function DocumentAIChat({ params: { chatId } }: PageProps) 
             <SlidingSidebar
                 {...{
                     chats: _chats,
-                    chatId: chatId,
                 }}
             />
             {/* Main content */}
@@ -50,7 +46,7 @@ export default async function DocumentAIChat({ params: { chatId } }: PageProps) 
                 {/* Header */}
                 <header className="bg-white shadow-sm">
                     <div className="flex items-center justify-center p-4">
-                        <h1 className="text-2xl font-semibold">{currentChat.pdfName}</h1>
+                        <h1 className="text-2xl font-semibold"></h1>
                     </div>
                 </header>
 
@@ -59,14 +55,10 @@ export default async function DocumentAIChat({ params: { chatId } }: PageProps) 
                     <div className="container mx-auto p-4 h-full">
                         <div className="flex flex-col lg:flex-row h-full space-y-4 lg:space-y-0 lg:space-x-4">
                             {/* Document preview */}
-                            <div className="flex-1 bg-white rounded-lg shadow-md p-4 overflow-auto">
-                                <DocumentPreview documentUrl={currentChat?.pdfUrl || ""} />
-                            </div>
 
+                            <p className='text-4xl text-center'>Selec any Chat.</p>
                             {/* Chat area */}
-                            <div className="flex-1 bg-white rounded-lg shadow-md p-4 flex flex-col">
-                                <ChatComponent chatId={chatId} />
-                            </div>
+
                         </div>
                     </div>
                 </main>
