@@ -8,8 +8,10 @@ import { eq } from 'drizzle-orm'
 import { chat, messages as _messages } from '@/lib/db/schema'
 import { NextResponse } from 'next/server'
 import { getPrompt } from '@/lib/utils'
-
-
+import { auth } from "@clerk/nextjs/server";
+import AWS from "aws-sdk";
+import { getPineconeClient } from '@/lib/pinecone'
+import { convertToASCII } from '@/lib/utils'
 // export const runtime = 'edge'
 // export const dynamic = 'force-dynamic';
 
@@ -80,3 +82,60 @@ export async function POST(req: Request) {
     }
 }
 
+
+
+
+export async function DELETE(req: Request) {
+    const { userId } = auth();
+    if (!!userId) {
+        NextResponse.json({ message: 'Not authorized' }, { status: 400 })
+    }
+
+
+    const { chatid } = await req.json();
+
+    const singleChat = (await db.select().from(chat).where(eq(chat.id, chatid)))[0];
+    if (!singleChat) {
+        return NextResponse.json({ message: 'The object you are trying to delete is not found' }, { status: 400 })
+    }
+    AWS.config.update({
+        accessKeyId: process.env.NEXT_PUBLIC_AWS_ACCESS_KEY_ID,
+        secretAccessKey: process.env.NEXT_PUBLIC_AWS_SECRET_ACCESS_KEY,
+    })
+    try {
+
+        const s3 = new AWS.S3({
+            params: {
+                Bucket: process.env.NEXT_PUBLIC_S3_BUCKET_NAME
+            },
+            region: 'eu-north-1'
+        })
+
+        let fileKey = singleChat.fileKey;
+        let params = {
+            Bucket: process.env.NEXT_PUBLIC_S3_BUCKET_NAME!,
+            Key: fileKey,
+        };
+        s3.deleteObject(params, (err: AWS.AWSError, data: AWS.S3.DeleteObjectOutput) => {
+            if (err) {
+                throw new Error("Was not able to delete the object, try again later")
+            } else {
+                console.log(data)
+            }
+        })
+
+
+        const client = await getPineconeClient()
+        const pineconeIndex = client.Index('pdfchatai')
+        const namespace = convertToASCII(fileKey);
+        await pineconeIndex.deleteOne(namespace);
+
+
+        let id = await db.delete(chat).where(eq(chat.id, chatid))
+
+        return NextResponse.json({ message: `Chat ${id} successfully deleted.` }, { status: 200 })
+    }
+    catch (e) {
+        return NextResponse.json({ message: 'Object delele failed, try again later' }, { status: 500 })
+    }
+}
