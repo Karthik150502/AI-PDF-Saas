@@ -3,7 +3,7 @@ import React from 'react'
 import { Button } from './ui/button'
 import { DrizzleChat } from '@/lib/db/schema'
 import Link from 'next/link'
-import { Plus, MessageCircle } from 'lucide-react'
+import { Plus, MessageCircle, Trash2 as DeleteIcon } from 'lucide-react'
 import clsx from 'clsx'
 import axios from 'axios'
 type Props = {
@@ -29,6 +29,14 @@ export default function ChatViewer({ chatId, chats }: Props) {
     }
 
 
+    const deleteChat = async (chatid: number) => {
+        const res = (await axios.delete("/api/chat")).data({
+            chatid: chatid
+        })
+        console.log(res)
+    }
+
+
     return (
         <div className='w-full h-screen pt-10 bg-white flex flex-col items-center'>
             <Link href="/" className=''>
@@ -44,6 +52,9 @@ export default function ChatViewer({ chatId, chats }: Props) {
                                 <p className='text-black text-xs whitespace-nowrap text-ellipsis w-full overflow-hidden truncate'>
                                     {chat.pdfName}
                                 </p>
+                                <DeleteIcon onClick={() => {
+                                    deleteChat(chat.id)
+                                }} className='text-black' size={15} strokeWidth={1} />
                             </div>
                         </Link>
                     })
