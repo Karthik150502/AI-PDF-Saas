@@ -77,9 +77,9 @@ export default function SlidingSidebar({
                             })}
                         >
                             {chat.pdfName}
-                            <DeleteIcon onClick={() => {
+                            {/* <DeleteIcon onClick={() => {
                                 deleteChat(chat.id)
-                            }} className='text-red-500 hover:scale-110 transition-transform' size={15} strokeWidth={1} />
+                            }} className='text-red-500 hover:scale-110 transition-transform' size={15} strokeWidth={1} /> */}
                         </button>
                     ))}
                 </div>
