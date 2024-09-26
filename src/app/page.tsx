@@ -23,9 +23,6 @@ export default async function Page() {
 
   const isPro = await checkSubscription();
 
-  const handleFile = (newFiles: File[]): void => {
-    console.log(newFiles)
-  }
 
   return (
 
