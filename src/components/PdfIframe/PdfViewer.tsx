@@ -26,7 +26,7 @@ export default function DocumentPreview({ documentUrl }: DocumentPreviewProps) {
             )}
             {documentUrl ? (
                 <iframe
-                    src={documentUrl}
+                    src={`https://docs.google.com/gview?url=${documentUrl}&embedded=true`}
                     className="w-full h-full border-0"
                     onLoad={handleIframeLoad}
                     title="Document Preview"
