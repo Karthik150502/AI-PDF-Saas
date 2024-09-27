@@ -58,12 +58,12 @@ export default async function DocumentAIChat({ params: { chatId } }: PageProps) 
                 <main className="flex-1 overflow-auto">
                     <div className="container mx-auto p-4 h-full">
                         <div className="w-full h-full bg-slate-500 flex lg:flex-row md:flex-col sm:flex-col xs:flex-col">
-                            <div className='lg:w-1/2 md:w-full sm:w-full xs:w-full lg:h-full md:h-1/2 sm:h-1/2 xs:h-1/2 bg-red-500'>
+                            <div className='lg:w-1/2 md:w-full sm:w-full xs:w-full lg:h-full md:h-1/2 sm:h-1/2 xs:h-1/2 bg-white'>
 
                                 <DocumentPreview documentUrl={currentChat?.pdfUrl || ""} />
 
                             </div>
-                            <div className='lg:w-1/2 md:w-full sm:w-full xs:w-full lg:h-full md:h-1/2 sm:h-1/2 xs:h-1/2  bg-black'>
+                            <div className='lg:w-1/2 md:w-full sm:w-full xs:w-full lg:h-full md:h-1/2 sm:h-1/2 xs:h-1/2  bg-white'>
                                 <ChatComponent chatId={chatId} />
 
                             </div>
@@ -87,14 +87,3 @@ export default async function DocumentAIChat({ params: { chatId } }: PageProps) 
 }
 
 
-
-
-{/* <div className="w-full h-full bg-slate-500 flex lg:flex-row md:flex-col sm:flex-col xs:flex-col">
-    <div className='lg:w-1/2 md:w-full sm:w-full xs:w-full lg:h-full md:h-1/2 sm:h-1/2 xs:h-1/2 bg-red-500'>
-
-
-    </div>
-    <div className='lg:w-1/2 md:w-full sm:w-full xs:w-full lg:h-full md:h-1/2 sm:h-1/2 xs:h-1/2  bg-black'>
-
-    </div>
-</div> */}
