@@ -8,6 +8,7 @@ import { ChevronLeft, ChevronRight, Trash2 as DeleteIcon, Plus, Zap } from 'luci
 import { DrizzleChat } from '@/lib/db/schema'
 import { cn } from '@/lib/utils'
 import axios from 'axios'
+import ChildConfirmModal from '../ConfirmModal/ConfirmModal'
 
 interface SlidingSidebarProps {
     chats: DrizzleChat[],
@@ -27,6 +28,9 @@ export default function SlidingSidebar({
     const [isOpen, setIsOpen] = useState(true)
     const router = useRouter();
     const toggleSidebar = () => setIsOpen(!isOpen)
+
+
+
     const handleSubscription = async () => {
         try {
             setLoading(true)
@@ -69,18 +73,30 @@ export default function SlidingSidebar({
                 <div className="p-4">
                     <h2 className="text-sm font-semibold text-gray-400 mb-2">Existing chats</h2>
                     {chats.map((chat) => (
-                        <button
+                        <div
                             key={chat.id}
                             onClick={() => { router.push(`/chats/${chat.id}`) }}
-                            className={cn("flex items-center justify-between gap-x-2 text-xs w-full text-left py-2 px-3 rounded-md hover:bg-gray-800 transition-colors", {
+                            className={cn("flex items-center justify-between gap-x-2 text-xs w-full text-left py-2 px-3 cursor-pointer rounded-md hover:bg-gray-800 transition-colors", {
                                 "bg-gray-800": chat.id === Number(chatId)
                             })}
                         >
                             {chat.pdfName}
-                            {/* <DeleteIcon onClick={() => {
-                                deleteChat(chat.id)
-                            }} className='text-red-500 hover:scale-110 transition-transform' size={15} strokeWidth={1} /> */}
-                        </button>
+
+                            <ChildConfirmModal
+                                trigger={
+                                    <DeleteIcon className='text-red-500 hover:scale-110 transition-transform' size={15} strokeWidth={1} />
+                                }
+                                title="Are you sure?"
+                                description={`You want to delete the chat ${chat.pdfName}`}
+                                cancelLabel="Dismiss"
+                                confirmLabel="Delete"
+                                onConfirm={() => {
+                                    deleteChat(chat.id)
+                                }}
+                                confirmStyle="bg-red-500"
+                            />
+
+                        </div>
                     ))}
                 </div>
             </ScrollArea>

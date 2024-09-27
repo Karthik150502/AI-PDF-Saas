@@ -91,6 +91,7 @@ export async function DELETE(req: Request) {
         NextResponse.json({ message: 'Not authorized' }, { status: 400 })
     }
 
+    
 
     const { chatid } = await req.json();
 
