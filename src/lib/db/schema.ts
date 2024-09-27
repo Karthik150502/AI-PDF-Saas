@@ -17,7 +17,7 @@ export type DrizzleChat = typeof chat.$inferSelect;
 
 export const messages = pgTable("messages", {
     id: serial("id").primaryKey(),
-    chatId: integer("chat_id").references(() => chat.id).notNull(),
+    chatId: integer("chat_id").references(() => chat.id, { onDelete: 'cascade' }).notNull(),
     content: text("content").notNull(),
     createdAt: timestamp("created_at").notNull().defaultNow(),
     role: userSystemEnum("role").notNull(),
