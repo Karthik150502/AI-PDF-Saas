@@ -91,7 +91,7 @@ export async function DELETE(req: Request) {
         NextResponse.json({ message: 'Not authorized' }, { status: 400 })
     }
 
-    
+
 
     const { chatid } = await req.json();
 
@@ -126,10 +126,13 @@ export async function DELETE(req: Request) {
         })
 
 
+
         const client = await getPineconeClient()
         const pineconeIndex = client.Index('pdfchatai')
         const namespace = convertToASCII(fileKey);
         await pineconeIndex.namespace(namespace).deleteAll()
+
+
 
 
 
