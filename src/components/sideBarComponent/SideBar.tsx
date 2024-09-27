@@ -81,11 +81,13 @@ export default function SlidingSidebar({
                         <div
                             key={chat.id}
                             onClick={() => { router.push(`/chats/${chat.id}`) }}
-                            className={cn("flex items-center justify-between gap-x-2 text-xs w-full text-left py-2 px-3 cursor-pointer rounded-md hover:bg-gray-800 transition-colors", {
+                            className={cn("flex items-center justify-between gap-x-2 text-xs w-full py-2 px-3 cursor-pointer rounded-md hover:bg-gray-800 transition-colors", {
                                 "bg-gray-800": chat.id === Number(chatId)
                             })}
                         >
-                            {chat.pdfName}
+                            <p className='whitespace-nowrap  text-left text-ellipsis overflow-hidden text-white w-[80%]'>
+                                {chat.pdfName}
+                            </p>
 
                             <ChildConfirmModal
                                 trigger={
