@@ -54,23 +54,47 @@ export default async function DocumentAIChat({ params: { chatId } }: PageProps) 
                     </div>
                 </header>
 
-                
+
                 <main className="flex-1 overflow-auto">
                     <div className="container mx-auto p-4 h-full">
-                        <div className="flex flex-col lg:flex-row h-full space-y-4 lg:space-y-0 lg:space-x-4">
-                            {/* Document preview */}
+                        <div className="w-full h-full bg-slate-500 flex lg:flex-row md:flex-col sm:flex-col xs:flex-col">
+                            <div className='lg:w-1/2 md:w-full sm:w-full xs:w-full lg:h-full md:h-1/2 sm:h-1/2 xs:h-1/2 bg-red-500'>
+
+                                <DocumentPreview documentUrl={currentChat?.pdfUrl || ""} />
+
+                            </div>
+                            <div className='lg:w-1/2 md:w-full sm:w-full xs:w-full lg:h-full md:h-1/2 sm:h-1/2 xs:h-1/2  bg-black'>
+                                <ChatComponent chatId={chatId} />
+
+                            </div>
+                        </div>
+
+
+                        {/* <div className="flex flex-col lg:flex-row h-full space-y-4 lg:space-y-0 lg:space-x-4">
                             <div className="flex-1 bg-white rounded-lg shadow-md p-4 overflow-auto">
                                 <DocumentPreview documentUrl={currentChat?.pdfUrl || ""} />
                             </div>
 
-                            {/* Chat area */}
                             <div className="flex-1 bg-white rounded-lg shadow-md p-4 flex flex-col">
                                 <ChatComponent chatId={chatId} />
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 </main>
             </div>
         </div>
     )
 }
+
+
+
+
+{/* <div className="w-full h-full bg-slate-500 flex lg:flex-row md:flex-col sm:flex-col xs:flex-col">
+    <div className='lg:w-1/2 md:w-full sm:w-full xs:w-full lg:h-full md:h-1/2 sm:h-1/2 xs:h-1/2 bg-red-500'>
+
+
+    </div>
+    <div className='lg:w-1/2 md:w-full sm:w-full xs:w-full lg:h-full md:h-1/2 sm:h-1/2 xs:h-1/2  bg-black'>
+
+    </div>
+</div> */}
