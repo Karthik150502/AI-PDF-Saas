@@ -70,15 +70,7 @@ export default async function DocumentAIChat({ params: { chatId } }: PageProps) 
                         </div>
 
 
-                        {/* <div className="flex flex-col lg:flex-row h-full space-y-4 lg:space-y-0 lg:space-x-4">
-                            <div className="flex-1 bg-white rounded-lg shadow-md p-4 overflow-auto">
-                                <DocumentPreview documentUrl={currentChat?.pdfUrl || ""} />
-                            </div>
 
-                            <div className="flex-1 bg-white rounded-lg shadow-md p-4 flex flex-col">
-                                <ChatComponent chatId={chatId} />
-                            </div>
-                        </div> */}
                     </div>
                 </main>
             </div>
