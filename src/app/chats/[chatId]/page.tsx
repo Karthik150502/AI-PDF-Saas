@@ -54,7 +54,7 @@ export default async function DocumentAIChat({ params: { chatId } }: PageProps) 
                     </div>
                 </header>
 
-                {/* Content area */}
+                
                 <main className="flex-1 overflow-auto">
                     <div className="container mx-auto p-4 h-full">
                         <div className="flex flex-col lg:flex-row h-full space-y-4 lg:space-y-0 lg:space-x-4">
