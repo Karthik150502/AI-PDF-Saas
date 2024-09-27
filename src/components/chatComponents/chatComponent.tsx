@@ -10,6 +10,8 @@ import { cn } from '@/lib/utils'
 export default function ChatComponent({ chatId }: { chatId: string }) {
 
 
+
+
     const { data, isLoading } = useQuery({
         queryKey: ['chat', chatId],
         queryFn: async () => {
@@ -29,10 +31,21 @@ export default function ChatComponent({ chatId }: { chatId: string }) {
     });
 
 
+    React.useEffect(() => {
+        const messageContainer = document.getElementById("msg-cont")
+        if (messageContainer) {
+            messageContainer.scrollTo({
+                top: messageContainer.scrollHeight,
+                behavior: "smooth"
+            })
+        }
+    }, [messages])
+
+
 
     return (
         <div className="flex flex-col h-full w-full">
-            : <div className="flex-1 overflow-y-auto hide-scroll p-4 space-y-4">
+            : <div className="flex-1 overflow-y-auto hide-scroll p-4 space-y-4 msg-cont">
                 {messages.map((message, index) => (
                     <div
                         key={index}
