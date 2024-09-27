@@ -8,6 +8,7 @@ import { ChevronLeft, ChevronRight, Trash2 as DeleteIcon, Plus, Zap } from 'luci
 import { DrizzleChat } from '@/lib/db/schema'
 import { cn } from '@/lib/utils'
 import axios from 'axios'
+import { useToast } from '@/hooks/use-toast'
 import ChildConfirmModal from '../ConfirmModal/ConfirmModal'
 
 interface SlidingSidebarProps {
@@ -24,7 +25,7 @@ export default function SlidingSidebar({
 
 
     const [loading, setLoading] = useState(false);
-
+    const { toast } = useToast()
     const [isOpen, setIsOpen] = useState(true)
     const router = useRouter();
     const toggleSidebar = () => setIsOpen(!isOpen)
@@ -46,6 +47,10 @@ export default function SlidingSidebar({
 
     const deleteChat = async (chatid: number) => {
         const res = await axios.delete("/api/chat", { data: { chatid } })
+        toast({
+            title: "Chat was deleted.",
+            variant: "default"
+        })
         console.log(res)
     }
 
