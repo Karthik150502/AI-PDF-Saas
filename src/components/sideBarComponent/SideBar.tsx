@@ -75,13 +75,13 @@ export default function SlidingSidebar({
 
             {/* Content area */}
             <ScrollArea className="flex-grow">
-                <div className="p-4">
-                    <h2 className="text-sm font-semibold text-gray-400 mb-2">Existing chats</h2>
+                <div className='w-full'>
+                    <h2 className="text-sm font-semibold text-gray-400 mb-2 px-2 py-4">Existing chats</h2>
                     {chats.map((chat) => (
                         <div
                             key={chat.id}
                             onClick={() => { router.push(`/chats/${chat.id}`) }}
-                            className={cn("flex items-center justify-between gap-x-2 text-xs w-full py-2 px-3 cursor-pointer rounded-md hover:bg-gray-800 transition-colors", {
+                            className={cn("flex items-center justify-between text-xs w-full py-2 px-3 cursor-pointer hover:bg-gray-800 transition-colors", {
                                 "bg-gray-800": chat.id === Number(chatId)
                             })}
                         >
