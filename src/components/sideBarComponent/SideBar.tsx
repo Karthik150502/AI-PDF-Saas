@@ -88,21 +88,21 @@ export default function SlidingSidebar({
                             <p className='whitespace-nowrap  text-left text-ellipsis overflow-hidden text-white w-[80%]'>
                                 {chat.pdfName}
                             </p>
-
-                            <ChildConfirmModal
-                                trigger={
-                                    <DeleteIcon className='text-red-500 hover:scale-110 transition-transform' size={15} strokeWidth={1} />
-                                }
-                                title="Are you sure?"
-                                description={`You want to delete the chat ${chat.pdfName}`}
-                                cancelLabel="Dismiss"
-                                confirmLabel="Delete"
-                                onConfirm={() => {
-                                    deleteChat(chat.id)
-                                }}
-                                confirmStyle="bg-red-500"
-                            />
-
+                            <div className="w-[20%] h-full">
+                                <ChildConfirmModal
+                                    trigger={
+                                        <DeleteIcon className='text-red-500 hover:scale-110 transition-transform' size={15} strokeWidth={1} />
+                                    }
+                                    title="Are you sure?"
+                                    description={`You want to delete the chat ${chat.pdfName}`}
+                                    cancelLabel="Dismiss"
+                                    confirmLabel="Delete"
+                                    onConfirm={() => {
+                                        deleteChat(chat.id)
+                                    }}
+                                    confirmStyle="bg-red-500"
+                                />
+                            </div>
                         </div>
                     ))}
                 </div>
