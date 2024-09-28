@@ -14,13 +14,14 @@ import { db } from "@/lib/db";
 import { chat } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
 import LandingAnimation from "@/components/landingAnimation/LandingAnimation";
+import { getCachedUserChat } from "@/lib/cache";
 export default async function Page() {
 
   const { userId } = auth();
   const isAuth = !!userId
-  const chats = (await db.select().from(chat).where(eq(chat.userId, userId!)))[0]
+  // const chats = (await db.select().from(chat).where(eq(chat.userId, userId!)))[0]
 
-
+  const chats = await getCachedUserChat(userId);
   const isPro = await checkSubscription();
 
 
