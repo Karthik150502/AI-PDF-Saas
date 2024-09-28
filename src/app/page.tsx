@@ -21,7 +21,7 @@ export default async function Page() {
   const isAuth = !!userId
   // const chats = (await db.select().from(chat).where(eq(chat.userId, userId!)))[0]
 
-  const chats = await getCachedUserChat(userId);
+  const chat = await getCachedUserChat(userId);
   const isPro = await checkSubscription();
 
 
@@ -41,7 +41,7 @@ export default async function Page() {
 
             className="flex mt-1">
             {
-              isAuth && <GoToChats />
+              isAuth && chat && <GoToChats />
             }
             {
               <div className="ml-2">
