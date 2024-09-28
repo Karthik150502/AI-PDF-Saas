@@ -6,10 +6,11 @@ import { eq } from 'drizzle-orm';
 
 export const getCachedUserChat = unstable_cache(
     async (id) => getChat(id),
-    ['users-first-chat'], { revalidate: 1800 }
+    [], { tags: ['users-first-chat'], revalidate: 1800 }
 );
 
 export default async function getChat({ userid }: { userid: string }) {
     const singleChat = (await db.select().from(chat).where(eq(chat.userId, userid)))[0]
+    console.log(singleChat)
     return singleChat
 }
