@@ -41,7 +41,7 @@ export default async function Page() {
 
             className="flex mt-1">
             {
-              isAuth && chats && chats.id && <GoToChats chatId={chats.id} />
+              isAuth && <GoToChats />
             }
             {
               <div className="ml-2">
