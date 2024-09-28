@@ -88,7 +88,7 @@ export default function SlidingSidebar({
                             <p className='whitespace-nowrap  text-left text-ellipsis overflow-hidden text-white w-[80%]'>
                                 {chat.pdfName}
                             </p>
-                            <div className="w-[20%] h-full">
+                            <div className="w-[20%] h-full pl-2">
                                 <ChildConfirmModal
                                     trigger={
                                         <DeleteIcon className='text-red-500 hover:scale-110 transition-transform' size={15} strokeWidth={1} />
