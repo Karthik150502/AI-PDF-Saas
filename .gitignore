@@ -3,6 +3,7 @@
 .env
 .env.development
 .env.production
+test.js
 
 # dependencies
 /node_modules
