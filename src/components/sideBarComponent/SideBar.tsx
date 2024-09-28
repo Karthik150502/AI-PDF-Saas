@@ -46,11 +46,13 @@ export default function SlidingSidebar({
 
 
     const deleteChat = async (chatid: number) => {
+        setLoading(true)
         const res = await axios.delete("/api/chat", { data: { chatid } })
         toast({
             title: "Chat was deleted.",
             variant: "default"
         })
+        setLoading(false)
         console.log(res)
     }
 
@@ -82,7 +84,8 @@ export default function SlidingSidebar({
                             key={chat.id}
                             onClick={() => { router.push(`/chats/${chat.id}`) }}
                             className={cn("flex items-center justify-between text-xs w-full py-2 px-3 cursor-pointer hover:bg-gray-800 transition-colors", {
-                                "bg-gray-800": chat.id === Number(chatId)
+                                "bg-gray-800": chat.id === Number(chatId),
+                                "cursor-none": loading
                             })}
                         >
                             <p className='whitespace-nowrap  text-left text-ellipsis overflow-hidden text-white w-[80%]'>
