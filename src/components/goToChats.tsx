@@ -4,10 +4,8 @@ import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { auth } from '@clerk/nextjs/server'
 import { getCachedUserChat } from '@/lib/cache'
-type Props = {
-    chatId: number
-}
-export default async function GoToChats({ chatId }: Props) {
+
+export default async function GoToChats() {
     const { userId } = auth();
     let chat = await getCachedUserChat(userId)
 
