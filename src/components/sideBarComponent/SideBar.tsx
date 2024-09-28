@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { Button } from "@/components/ui/button"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { useRouter } from 'next/navigation'
-import { ChevronLeft, ChevronRight, Trash2 as DeleteIcon, Plus, Zap } from 'lucide-react'
+import { ChevronLeft, ChevronRight, Trash2 as DeleteIcon, Plus, Zap, Home } from 'lucide-react'
 import { DrizzleChat } from '@/lib/db/schema'
 import { cn } from '@/lib/utils'
 import axios from 'axios'
@@ -112,6 +112,10 @@ export default function SlidingSidebar({
             <div className="p-4 border-t border-gray-800">
                 <div className="flex flex-col space-y-2">
 
+                    <Button variant="ghost" className="justify-start" onClick={() => { router.push("/") }}>
+                        <Home className="mr-2 h-4 w-4" />
+                        Home
+                    </Button>
                     <Button variant="ghost" className="justify-start" onClick={() => { router.push("/") }}>
                         <Plus className="mr-2 h-4 w-4" />
                         Create another chat
