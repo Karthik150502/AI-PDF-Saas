@@ -10,9 +10,6 @@ import { checkSubscription } from "@/lib/subscription";
 import SubscriptionButton from "@/components/subscriptionButton";
 
 import GoToChats from "@/components/goToChats";
-import { db } from "@/lib/db";
-import { chat } from "@/lib/db/schema";
-import { eq } from "drizzle-orm";
 import LandingAnimation from "@/components/landingAnimation/LandingAnimation";
 import { getCachedUserChat } from "@/lib/cache";
 export default async function Page() {
