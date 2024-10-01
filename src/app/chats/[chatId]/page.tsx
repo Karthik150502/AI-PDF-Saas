@@ -48,6 +48,7 @@ export default async function DocumentAIChat({ params: { chatId } }: PageProps) 
             {/* Main content */}
             <div className="flex-1 flex flex-col overflow-hidden">
                 {/* Header */}
+
                 <header className="bg-white shadow-sm">
                     <div className="flex items-center justify-center p-4">
                         <h1 className="text-2xl font-semibold">{currentChat.pdfName}</h1>
