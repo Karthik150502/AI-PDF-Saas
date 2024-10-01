@@ -48,10 +48,20 @@ export default function SlidingSidebar({
     const deleteChat = async (chatid: number) => {
         setLoading(true)
         const res = await axios.delete("/api/chat", { data: { chatid } })
-        toast({
-            title: "Chat was deleted.",
-            variant: "default"
-        })
+        if (res.status == 200) {
+
+            toast({
+                title: "Chat was deleted.",
+                variant: "default"
+            })
+        } else {
+            toast({
+                title: "Cannot delete chat.",
+                description: "Chat does not exist or there is some error from our side, kindly try again later.",
+                variant: "destructive"
+            })
+        }
+
         setLoading(false)
         console.log(res)
     }
