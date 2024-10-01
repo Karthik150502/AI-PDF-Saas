@@ -49,7 +49,7 @@ export default function SlidingSidebar({
         setLoading(true)
         const res = await axios.delete("/api/chat", { data: { chatid } })
         if (res.status == 200) {
-
+            router.refresh()
             toast({
                 title: "Chat was deleted.",
                 variant: "default"
@@ -61,7 +61,6 @@ export default function SlidingSidebar({
                 variant: "destructive"
             })
         }
-
         setLoading(false)
         console.log(res)
     }
