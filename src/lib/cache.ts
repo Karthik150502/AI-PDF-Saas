@@ -5,7 +5,7 @@ import { eq } from 'drizzle-orm';
 
 export const getCachedUserChat = unstable_cache(
     async (id) => await getChat(id),
-    [], { tags: ['users-first-chat'], revalidate: 10 }
+    [], { tags: ['users-first-chat'], revalidate: 60 }
 );
 
 export default async function getChat(userid: string) {
