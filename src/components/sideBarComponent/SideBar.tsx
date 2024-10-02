@@ -5,20 +5,24 @@ import { Button } from "@/components/ui/button"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { useRouter } from 'next/navigation'
 import { ChevronLeft, ChevronRight, Trash2 as DeleteIcon, Plus, Zap, Home } from 'lucide-react'
-import { DrizzleChat } from '@/lib/db/schema'
+import { chat, DrizzleChat } from '@/lib/db/schema'
 import { cn } from '@/lib/utils'
 import axios from 'axios'
 import { useToast } from '@/hooks/use-toast'
 import ChildConfirmModal from '../ConfirmModal/ConfirmModal'
+import { db } from '@/lib/db'
+import { eq } from 'drizzle-orm'
 
 interface SlidingSidebarProps {
     chats: DrizzleChat[],
     chatId?: string,
+    userId: string
 }
 
 export default function SlidingSidebar({
     chats,
     chatId,
+    userId
 }: SlidingSidebarProps) {
 
 
@@ -44,12 +48,19 @@ export default function SlidingSidebar({
         }
     }
 
+    const reloadChats = async () => {
+        const _chats = await db.select().from(chat).where(eq(chat.userId, userId));
+        if (_chats) {
+            return _chats[0].id
+        }
+    }
 
     const deleteChat = async (chatid: number) => {
         setLoading(true)
         const res = await axios.delete("/api/chat", { data: { chatid } })
         if (res.status == 200) {
-            router.refresh()
+            let chatid = await reloadChats();
+            router.push(`chats/${chatid}`);
             toast({
                 title: "Chat was deleted.",
                 variant: "default"
