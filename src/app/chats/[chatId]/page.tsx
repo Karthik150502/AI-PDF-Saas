@@ -43,7 +43,6 @@ export default async function DocumentAIChat({ params: { chatId } }: PageProps) 
                 {...{
                     chats: _chats,
                     chatId: chatId,
-                    userId
                 }}
             />
             {/* Main content */}
