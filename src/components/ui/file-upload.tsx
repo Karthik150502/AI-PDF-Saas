@@ -167,7 +167,7 @@ export const FileUpload = ({
                 </div>
                 <div className="flex flex-col items-center justify-center">
                     <p className="relative z-20 text-neutral-700 dark:text-neutral-300 text-xs font-bold">
-                        Upload file
+                        Upload a file to create a new Chat
                     </p>
                     <p className="relative z-20 text-neutral-400 dark:text-neutral-400 text-xs font-bold mt-2">
                         Drag or drop your files here or click to upload
