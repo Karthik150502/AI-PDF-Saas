@@ -55,7 +55,7 @@ export default async function Page() {
           <div
             className="w-full mt-2">
             {
-              isAuth ? <FileUpload /> : <Link href="sign-in"><Button className="rouded-full">Lets get started <LogIn strokeWidth={1} size={20} className="ml-1" /></Button></Link>
+              isAuth ? <FileUpload /> : <Link href="sign-in"><Button className="rouded-none">Lets get started <LogIn strokeWidth={1} size={20} className="ml-1" /></Button></Link>
             }
           </div>
 

@@ -11,7 +11,7 @@ export default async function GoToChats({ chat }: { chat: DrizzleChat }) {
 
 
     return (
-        <Button className="flex gap-x-1 rounded-full">
+        <Button className="flex gap-x-1 rounded-none">
             <Link href={`/chats/${chat.id}`}>Go to Chats</Link>
             <ArrowRight strokeWidth={1} />
         </Button>
