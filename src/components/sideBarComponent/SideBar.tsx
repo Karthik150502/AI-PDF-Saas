@@ -10,6 +10,12 @@ import { cn } from '@/lib/utils'
 import axios from 'axios'
 import { useToast } from '@/hooks/use-toast'
 import ChildConfirmModal from '../ConfirmModal/ConfirmModal'
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipProvider,
+    TooltipTrigger,
+} from "@/components/ui/tooltip"
 
 interface SlidingSidebarProps {
     chats: DrizzleChat[],
@@ -70,14 +76,26 @@ export default function SlidingSidebar({
         <div className={`fixed inset-y-0 right-0 z-50 w-64 bg-slate-950 text-white transform ${isOpen ? 'translate-x-0' : 'translate-x-full'
             } transition-transform duration-300 ease-in-out flex flex-col`}>
             {/* Toggle button */}
-            <button
-                onClick={toggleSidebar}
-                className="absolute -left-6 top-1/2 bg-slate-950 text-white p-2 
+
+
+            <TooltipProvider>
+                <Tooltip>
+                    <TooltipTrigger>
+                        <button
+                            onClick={toggleSidebar}
+                            className="absolute -left-6 top-1/2 bg-slate-950 text-white p-2 
                 rounded-r-md"
-                aria-label={isOpen ? "Close sidebar" : "Open sidebar"}
-            >
-                {isOpen ? <ChevronLeft size={15} /> : <ChevronRight size={15} />}
-            </button>
+                            aria-label={isOpen ? "Close sidebar" : "Open sidebar"}
+                        >
+                            {isOpen ? <ChevronLeft size={15} /> : <ChevronRight size={15} />}
+                        </button>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                        <p>{isOpen ? 'Close Chats' : 'Close Chats'}</p>
+                    </TooltipContent>
+                </Tooltip>
+            </TooltipProvider>
+
 
             {/* Header */}
             <div className="p-4 border-b border-gray-800">
