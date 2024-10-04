@@ -32,7 +32,7 @@ export default async function DocumentAIChat({ params: { chatId } }: PageProps) 
 
     if (!currentChat) {
         console.log(`Chat ${chatId} not found, redirecting to the home page.`)
-        redirect("/")
+        // redirect("/")
     }
 
     return (
@@ -48,7 +48,6 @@ export default async function DocumentAIChat({ params: { chatId } }: PageProps) 
             {/* Main content */}
             <div className="flex-1 flex flex-col overflow-hidden">
                 {/* Header */}
-
                 <header className="bg-white shadow-sm">
                     <div className="flex items-center justify-center p-4">
                         <h1 className="text-2xl font-semibold">{currentChat.pdfName}</h1>
@@ -60,9 +59,7 @@ export default async function DocumentAIChat({ params: { chatId } }: PageProps) 
                     <div className="container mx-auto p-4 h-full">
                         <div className="w-full h-full bg-slate-500 flex lg:flex-row md:flex-col sm:flex-col xs:flex-col">
                             <div className='lg:w-1/2 md:w-full sm:w-full xs:w-full lg:h-full md:h-1/2 sm:h-1/2 xs:h-1/2 bg-white'>
-
                                 <DocumentPreview documentUrl={currentChat?.pdfUrl || ""} />
-
                             </div>
                             <div className='lg:w-1/2 md:w-full sm:w-full xs:w-full lg:h-full md:h-1/2 sm:h-1/2 xs:h-1/2  bg-white'>
                                 <ChatComponent chatId={chatId} />
