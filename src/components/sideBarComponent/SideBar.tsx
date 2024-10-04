@@ -124,15 +124,15 @@ export default function SlidingSidebar({
             <div className="p-4 border-t border-gray-800">
                 <div className="flex flex-col space-y-2">
 
-                    <Button variant="ghost" className="justify-start" onClick={() => { router.push("/") }}>
+                    <Button variant="ghost" className="justify-start rounded-none" onClick={() => { router.push("/") }}>
                         <Home className="mr-2 h-4 w-4" />
                         Home
                     </Button>
-                    <Button variant="ghost" className="justify-start" onClick={() => { router.push("/") }}>
+                    <Button variant="ghost" className="justify-start rounded-none" onClick={() => { router.push("/") }}>
                         <Plus className="mr-2 h-4 w-4" />
                         Create another chat
                     </Button>
-                    <Button variant="default" className="justify-start" onClick={handleSubscription} disabled={loading}>
+                    <Button variant="default" className="justify-start rounded-none" onClick={handleSubscription} disabled={loading}>
                         <Zap className="mr-2 h-4 w-4" />
                         Upgrade to pro
                     </Button>

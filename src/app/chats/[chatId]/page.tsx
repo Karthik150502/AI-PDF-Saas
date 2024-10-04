@@ -32,7 +32,7 @@ export default async function DocumentAIChat({ params: { chatId } }: PageProps) 
 
     if (!currentChat) {
         console.log(`Chat ${chatId} not found, redirecting to the home page.`)
-        // redirect("/")
+        redirect("/")
     }
 
     return (
