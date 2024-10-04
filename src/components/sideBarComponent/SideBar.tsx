@@ -94,7 +94,7 @@ export default function SlidingSidebar({
                             onClick={() => { router.push(`/chats/${chat.id}`) }}
                             className={cn("flex items-center justify-between text-xs w-full py-2 px-3 cursor-pointer hover:bg-gray-800 transition-colors", {
                                 "bg-gray-800": chat.id === Number(chatId),
-                                "cursor-none": loading
+                                "pointer-events-none": loading
                             })}
                         >
                             <p className='whitespace-nowrap  text-left text-ellipsis overflow-hidden text-white w-[80%]'>
