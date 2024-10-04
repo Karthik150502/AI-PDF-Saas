@@ -91,7 +91,7 @@ export default function SlidingSidebar({
                         </button>
                     </TooltipTrigger>
                     <TooltipContent>
-                        <p>{isOpen ? 'Close Chats' : 'Close Chats'}</p>
+                        <p>{isOpen ? 'Close Chats' : 'Open Chats'}</p>
                     </TooltipContent>
                 </Tooltip>
             </TooltipProvider>
@@ -115,10 +115,10 @@ export default function SlidingSidebar({
                                 "pointer-events-none": loading
                             })}
                         >
-                            <p className='whitespace-nowrap  text-left text-ellipsis overflow-hidden text-white w-[80%]'>
+                            <p className='whitespace-nowrap  text-left text-ellipsis overflow-hidden text-white w-[90%]'>
                                 {chat.pdfName}
                             </p>
-                            <div className="w-[20%] h-full pl-1">
+                            <div className="w-[10%] h-full pl-1 flex justify-end">
                                 <ChildConfirmModal
                                     trigger={
                                         <DeleteIcon className='text-red-500 hover:scale-110 transition-transform' size={15} strokeWidth={1} />
