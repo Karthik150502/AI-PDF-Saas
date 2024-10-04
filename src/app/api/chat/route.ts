@@ -140,7 +140,7 @@ export async function DELETE(req: Request) {
         let id = await db.delete(chat).where(eq(chat.id, chatid))
         let nextChat = await db.select().from(chat).where(eq(chat.userId, userId as string))
 
-        return NextResponse.json({ message: `Chat ${id} successfully deleted.`, nextChatid: nextChat[0].id }, { status: 200 })
+        return NextResponse.json({ message: `Chat ${id} successfully deleted.`, nextChatid: nextChat[0]?.id }, { status: 200 })
     }
     catch (e) {
         return NextResponse.json({ message: `Object delele failed, try again later: ${e}` }, { status: 500 })

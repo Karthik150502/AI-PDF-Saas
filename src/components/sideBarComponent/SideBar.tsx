@@ -67,12 +67,12 @@ export default function SlidingSidebar({
 
 
     return (
-        <div className={`fixed inset-y-0 left-0 z-50 w-64 bg-slate-950 text-white transform ${isOpen ? 'translate-x-0' : '-translate-x-full'
+        <div className={`fixed inset-y-0 right-0 z-50 w-64 bg-slate-950 text-white transform ${isOpen ? 'translate-x-0' : 'translate-x-full'
             } transition-transform duration-300 ease-in-out flex flex-col`}>
             {/* Toggle button */}
             <button
                 onClick={toggleSidebar}
-                className="absolute -right-6 top-1/2 bg-slate-950 text-white p-2 
+                className="absolute -left-6 top-1/2 bg-slate-950 text-white p-2 
                 rounded-r-md"
                 aria-label={isOpen ? "Close sidebar" : "Open sidebar"}
             >
