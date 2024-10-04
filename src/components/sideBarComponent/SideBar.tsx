@@ -81,13 +81,13 @@ export default function SlidingSidebar({
 
             {/* Header */}
             <div className="p-4 border-b border-gray-800">
-                <h1 className="text-xl font-bold">DocAI PDF Chatting</h1>
+                <h1 className="text-xl font-bold text-center">DocAI PDF Chatting</h1>
             </div>
 
             {/* Content area */}
             <ScrollArea className="flex-grow">
                 <div className='w-full'>
-                    <h2 className="text-sm font-semibold text-gray-400 mb-2 px-2 py-4">Existing chats</h2>
+                    <h2 className="text-right text-sm font-semibold text-gray-400 mb-2 px-2 py-4">Existing chats</h2>
                     {chats.map((chat) => (
                         <div
                             key={chat.id}
