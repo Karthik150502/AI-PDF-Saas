@@ -83,14 +83,13 @@ export default function SlidingSidebar({
                     <TooltipTrigger>
                         <button
                             onClick={toggleSidebar}
-                            className="absolute -left-6 top-1/2 bg-slate-950 text-white p-2 
-                rounded-r-md"
+                            className="absolute -left-6 top-1/2 bg-slate-950 text-white p-2 rounded-r-md"
                             aria-label={isOpen ? "Close sidebar" : "Open sidebar"}
                         >
                             {isOpen ? <ChevronLeft size={15} /> : <ChevronRight size={15} />}
                         </button>
                     </TooltipTrigger>
-                    <TooltipContent>
+                    <TooltipContent className="absolute -left-6 top-[calc(50%-15px)] bg-slate-950 text-white p-2 rounded-r-md">
                         <p>{isOpen ? 'Close Chats' : 'Open Chats'}</p>
                     </TooltipContent>
                 </Tooltip>
