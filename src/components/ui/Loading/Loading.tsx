@@ -17,7 +17,7 @@ export default function Loading({ status }: { status?: string }) {
             </div>
             {
                 status && <div className="progress-status">
-                    <p className="text-base font-bold">{status}</p>
+                    <p className="text-xs font-bold">{status}</p>
                 </div>
             }
 
