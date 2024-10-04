@@ -51,11 +51,11 @@ export default async function Page() {
           </div>
 
 
-          <p className="max-w-xl text-lg mt-1 text-slate-600">How magical would it be if your study material could talk with you, and answer all your douts? Well say no more. </p>
+          <p className="max-w-xl text-xs mt-1 text-slate-600">How magical would it be if your study material could talk with you, and answer all your douts? Well say no more. </p>
           <div
             className="w-full mt-2">
             {
-              isAuth ? <FileUpload /> : <Link href="sign-in"><Button className="rouded-none">Lets get started <LogIn strokeWidth={1} size={20} className="ml-1" /></Button></Link>
+              isAuth ? <FileUpload /> : <Link href="sign-in"><Button className="rouded-none text-sm">Lets get started <LogIn strokeWidth={1} size={20} className="ml-1" /></Button></Link>
             }
           </div>
 
