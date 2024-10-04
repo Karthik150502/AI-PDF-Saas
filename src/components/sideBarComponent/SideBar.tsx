@@ -25,7 +25,7 @@ export default function SlidingSidebar({
 
     const [loading, setLoading] = useState(false);
     const { toast } = useToast()
-    const [isOpen, setIsOpen] = useState(true)
+    const [isOpen, setIsOpen] = useState(false)
     const router = useRouter();
     const toggleSidebar = () => setIsOpen(!isOpen)
 
