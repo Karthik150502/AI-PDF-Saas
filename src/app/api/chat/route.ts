@@ -100,21 +100,21 @@ export async function DELETE(req: Request) {
         return NextResponse.json({ message: 'The object you are trying to delete is not found' }, { status: 400 })
     }
     AWS.config.update({
-        accessKeyId: process.env.NEXT_PUBLIC_AWS_ACCESS_KEY_ID,
-        secretAccessKey: process.env.NEXT_PUBLIC_AWS_SECRET_ACCESS_KEY,
+        accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
     })
     try {
 
         const s3 = new AWS.S3({
             params: {
-                Bucket: process.env.NEXT_PUBLIC_S3_BUCKET_NAME
+                Bucket: process.env.S3_BUCKET_NAME
             },
             region: 'eu-north-1'
         })
 
         let fileKey = singleChat.fileKey;
         let params = {
-            Bucket: process.env.NEXT_PUBLIC_S3_BUCKET_NAME!,
+            Bucket: process.env.S3_BUCKET_NAME!,
             Key: fileKey,
         };
         s3.deleteObject(params, (err: AWS.AWSError, data: AWS.S3.DeleteObjectOutput) => {

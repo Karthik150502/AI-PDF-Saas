@@ -4,7 +4,6 @@ import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { IconUpload } from "@tabler/icons-react";
 import { useDropzone } from "react-dropzone";
-import { uploadFileToS3 } from "@/lib/s3";
 import { useMutation } from "@tanstack/react-query";
 import axios from 'axios'
 // import toast from "react-hot-toast";
@@ -81,7 +80,9 @@ export const FileUpload = ({
 
         try {
             setUploading(true)
-            const data = await uploadFileToS3(file);
+            const formData = new FormData();
+            formData.append("file", file);
+            const { data } = await axios.post("/api/upload", formData);
             if (!data?.file_key || !data.file_name) {
                 shadCnToast({
                     title: "Something went wrong.",

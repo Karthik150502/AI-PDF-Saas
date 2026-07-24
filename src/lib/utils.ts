@@ -16,11 +16,10 @@ export function convertToASCII(s: string) {
 }
 
 export const getChunks = (array: PineconeRecord<RecordMetadata>[], batchSize: number = 10) => {
-  const chunks: PineconeRecord<RecordMetadata>[] = [];
+  const chunks: PineconeRecord<RecordMetadata>[][] = [];
 
   for (let i = 0; i < array.length; i += batchSize) {
-    // chunks.push(array.slice(i, i + batchSize));
-    chunks.push(array[i]);
+    chunks.push(array.slice(i, i + batchSize));
   }
 
   return chunks;

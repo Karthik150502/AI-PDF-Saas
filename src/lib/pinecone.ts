@@ -83,7 +83,7 @@ export async function loadS3IntoPinecone(fileKey: string) {
 
     const chunkedVectors = getChunks(vectors, 10)
     for (const chunk of chunkedVectors) {
-        await pineconeIndex.namespace(namespace).upsert([chunk])
+        await pineconeIndex.namespace(namespace).upsert(chunk)
     }
     return documents[0]
 }
